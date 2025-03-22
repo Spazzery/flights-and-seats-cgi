@@ -27,7 +27,7 @@ public class Seat {
     private boolean isAvailable;
 
     @ManyToOne  // a seat can only be in one airplane
-    @JoinColumn(name = "plane_id")
+    @JoinColumn(name = "plane_id")  // This column is in the Seat table, not the Plane table
     private Plane plane;
 
 }

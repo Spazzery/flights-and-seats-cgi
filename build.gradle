@@ -1,47 +1,59 @@
+// Plugin declarations
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.4.3'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
+// Project metadata
 group = 'com.summer'
 version = '0.0.1-SNAPSHOT'
 
+// Java toolchain configuration
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(24)
+        languageVersion = JavaLanguageVersion.of(23) // Specify Java language version
     }
 }
 
+// Configuration for compile-only dependencies
 configurations {
     compileOnly {
-        extendsFrom annotationProcessor
+        extendsFrom annotationProcessor // Allow annotation processors to extend compile-only scope
     }
 }
 
+// Repository definitions
 repositories {
     mavenCentral()
 }
 
+// Dependencies grouped by purpose
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Spring Boot starters
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA for database interaction
+    implementation 'org.springframework.boot:spring-boot-starter-validation' // Input validation
+    implementation 'org.springframework.boot:spring-boot-starter-web' // Web application support
 
-    compileOnly 'org.projectlombok:lombok'
+    // Lombok
+    compileOnly 'org.projectlombok:lombok' // Lombok for reducing boilerplate code
+    annotationProcessor 'org.projectlombok:lombok:1.18.36' // Lombok's annotation processor
 
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+    // Development-only dependencies
+    developmentOnly 'org.springframework.boot:spring-boot-devtools' // Developer tools
+    // not yet - developmentOnly 'org.springframework.boot:spring-boot-docker-compose' // Docker Compose integration
 
-    runtimeOnly 'com.h2database:h2'
+    // Runtime-only dependencies
+    runtimeOnly 'com.h2database:h2' // In-memory database for testing and development
 
-    annotationProcessor 'org.projectlombok:lombok'
+    // Test dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test' // Test utilities and frameworks
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // Test runtime dependencies
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // JUnit platform launcher
 }
 
+// Task configuration for testing
 tasks.named('test') {
-    useJUnitPlatform()
+    useJUnitPlatform() // Use JUnit Platform for running tests
 }

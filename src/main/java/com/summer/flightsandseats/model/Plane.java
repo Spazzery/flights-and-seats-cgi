@@ -19,6 +19,7 @@ public class Plane {
     private Integer totalRows;
     private Integer seatsPerRow;
 
-    @OneToMany(mappedBy = "plane_id", cascade = CascadeType.ALL)  // plane can have many seats
+    // lowercase "plane" refers to the variable field inside the Seat class
+    @OneToMany(mappedBy = "plane", cascade = CascadeType.ALL)  // plane can have many seats
     private List<Seat> seats;
 }
