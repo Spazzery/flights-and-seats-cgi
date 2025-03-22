@@ -1,12 +1,24 @@
 package com.summer.flightsandseats.model;
 
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Getter
-@Setter
+import java.util.List;
+import java.util.UUID;
+
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Plane {
     @Id
-    private int Id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
+
+    private String model;
+    private Integer totalRows;
+    private Integer seatsPerRow;
+
+    @OneToMany(mappedBy = "plane_id", cascade = CascadeType.ALL)  // plane can have many seats
+    private List<Seat> seats;
 }
