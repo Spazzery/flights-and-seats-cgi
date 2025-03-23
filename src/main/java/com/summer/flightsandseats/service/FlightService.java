@@ -1,5 +1,7 @@
 package com.summer.flightsandseats.service;
 
+import com.summer.flightsandseats.DTO.FlightDTO;
+import com.summer.flightsandseats.mapper.FlightMapper;
 import com.summer.flightsandseats.model.Flight;
 import com.summer.flightsandseats.repository.FlightRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,35 +18,44 @@ import java.util.stream.Collectors;
 public class FlightService {
 
     private final FlightRepository flightRepository;
+    private final FlightMapper flightMapper;
 
     // CRUD
 
-    public List<Flight> getAllFlights() {
-        return flightRepository.findAll();
+    public List<FlightDTO> getAllFlights() {
+        List<Flight> flights = flightRepository.findAll();
+        return flightMapper.toDTOList(flights);
     }
 
-    public Optional<Flight> getFlightById(Integer id) {
-        return flightRepository.findById(id);
+    public FlightDTO getFlightById(Integer id) {
+        Flight flight = flightRepository.findById(id).orElse(null);
+        return flight != null ? flightMapper.toDTO(flight) : null;
     }
 
-    public Flight saveFlight(Flight flight) {
-        return flightRepository.save(flight);
+    public FlightDTO saveFlight(FlightDTO flightDTO) {
+        Flight flight = flightMapper.toEntity(flightDTO);
+        Flight savedFlight = flightRepository.save(flight);
+        return flightMapper.toDTO(savedFlight);
     }
 
-    public void deleteFlight(Integer id) {
-        flightRepository.deleteById(id);
+    public boolean deleteFlight(Integer id) {
+        if (flightRepository.existsById(id)) {
+            flightRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     // Custom
     // Had ChatGPT generate this - simpler to do in Java rather than JPA SQL or Pure SQL
-    public List<Flight> filterFlights(
+    public List<FlightDTO> filterFlights(
             String destination,
             LocalDate date,
             LocalTime startTime,
             LocalTime endTime,
             Double minPrice,
             Double maxPrice) {
-        List<Flight> flights = flightRepository.findAll(); // Get all flights
+        List<FlightDTO> flights = getAllFlights(); // Get all flights
 
         return flights.stream()
                 .filter(flight -> destination == null || flight.getDestination().equalsIgnoreCase(destination)) // Filter by destination

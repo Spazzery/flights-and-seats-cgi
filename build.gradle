@@ -30,26 +30,24 @@ repositories {
 
 // Dependencies grouped by purpose
 dependencies {
-    // Spring Boot starters
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA for database interaction
     implementation 'org.springframework.boot:spring-boot-starter-validation' // Input validation
     implementation 'org.springframework.boot:spring-boot-starter-web' // Web application support
 
     // Lombok
-    compileOnly 'org.projectlombok:lombok' // Lombok for reducing boilerplate code
-    annotationProcessor 'org.projectlombok:lombok:1.18.36' // Lombok's annotation processor
+    compileOnly 'org.projectlombok:lombok:1.18.36' // Lombok for reducing boilerplate code
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
-    // Development-only dependencies
+    // Mapstruct
+    implementation 'org.mapstruct:mapstruct:1.6.3'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools' // Developer tools
     // not yet - developmentOnly 'org.springframework.boot:spring-boot-docker-compose' // Docker Compose integration
 
-    // Runtime-only dependencies
     runtimeOnly 'com.h2database:h2' // In-memory database for testing and development
 
-    // Test dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test' // Test utilities and frameworks
-
-    // Test runtime dependencies
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // JUnit platform launcher
 }
 

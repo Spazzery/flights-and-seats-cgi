@@ -1,8 +1,11 @@
 package com.summer.flightsandseats.controller;
 
+import com.summer.flightsandseats.DTO.FlightDTO;
 import com.summer.flightsandseats.model.Flight;
 import com.summer.flightsandseats.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -22,18 +25,28 @@ public class FlightController {
     }
 
     @GetMapping
-    public List<Flight> getAllFlights() {
-        return flightService.getAllFlights();
+    public ResponseEntity<List<FlightDTO>> getAllFlights() {
+        List<FlightDTO> flights = flightService.getAllFlights();
+
+        if (flights.isEmpty()) {
+            return ResponseEntity.noContent().build(); // Return 204 if no flights
+        }
+        return ResponseEntity.ok(flights); // Return 200 with flights
     }
 
     @GetMapping("/{id}")
-    public Optional<Flight> getFlightById(@PathVariable Integer id) {
-        return flightService.getFlightById(id);
+    public ResponseEntity<FlightDTO> getFlightById(@PathVariable Integer id) {
+        FlightDTO flight = flightService.getFlightById(id);
+        if (flight == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(flight, HttpStatus.OK);
     }
 
     @PostMapping
-    public Flight saveFlight(@RequestBody Flight flight) {
-        return flightService.saveFlight(flight);
+    public ResponseEntity<FlightDTO> saveFlight(@RequestBody FlightDTO flightDTO) {
+        FlightDTO createdFlight = flightService.saveFlight(flightDTO);
+        return new ResponseEntity<>(createdFlight, HttpStatus.CREATED);
     }
 
 //    @PutMapping("/{id}")
@@ -42,13 +55,17 @@ public class FlightController {
 //    }
 
     @DeleteMapping("/{id}")
-    public void deleteFlight(@PathVariable Integer id) {
-        flightService.deleteFlight(id);
+    public ResponseEntity<Void> deleteFlight(@PathVariable Integer id) {
+        boolean deleted = flightService.deleteFlight(id);
+        if (!deleted) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     // Got from ChatGPT, wrote it myself
     @GetMapping("/filter")
-    public List<Flight> filter(
+    public List<FlightDTO> filter(
             @RequestParam(required = false) String destination,
             @RequestParam(required = false) LocalDate date,
             @RequestParam(required = false) LocalTime startTime,
