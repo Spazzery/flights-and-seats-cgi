@@ -18,24 +18,23 @@ import java.util.stream.Collectors;
 public class FlightService {
 
     private final FlightRepository flightRepository;
-    private final FlightMapper flightMapper;
 
     // CRUD
 
     public List<FlightDTO> getAllFlights() {
         List<Flight> flights = flightRepository.findAll();
-        return flightMapper.toDTOList(flights);
+        return FlightMapper.INSTANCE.toDTOList(flights);
     }
 
     public FlightDTO getFlightById(Integer id) {
         Flight flight = flightRepository.findById(id).orElse(null);
-        return flight != null ? flightMapper.toDTO(flight) : null;
+        return flight != null ? FlightMapper.INSTANCE.toDTO(flight) : null;
     }
 
     public FlightDTO saveFlight(FlightDTO flightDTO) {
-        Flight flight = flightMapper.toEntity(flightDTO);
+        Flight flight = FlightMapper.INSTANCE.toEntity(flightDTO);
         Flight savedFlight = flightRepository.save(flight);
-        return flightMapper.toDTO(savedFlight);
+        return FlightMapper.INSTANCE.toDTO(savedFlight);
     }
 
     public boolean deleteFlight(Integer id) {
