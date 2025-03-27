@@ -1,5 +1,7 @@
 package com.summer.flightsandseats.service;
 
+import com.summer.flightsandseats.dto.PlaneDTO;
+import com.summer.flightsandseats.mapper.PlaneMapper;
 import com.summer.flightsandseats.model.Plane;
 import com.summer.flightsandseats.repository.PlaneRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,20 +16,29 @@ public class PlaneService {
 
     private final PlaneRepository planeRepository;
 
-    public List<Plane> getAllPlanes() {
-        return planeRepository.findAll();
+
+    public List<PlaneDTO> getAllPlanes() {
+        List<Plane> planes = planeRepository.findAll();
+        return PlaneMapper.INSTANCE.toDTOList(planes);
     }
 
-    public Optional<Plane> getPlaneById(Integer id) {
-        return planeRepository.findById(id);
+    public PlaneDTO getPlaneById(Integer id) {
+        Plane plane = planeRepository.findById(id).orElse(null);
+        return plane != null ? PlaneMapper.INSTANCE.toDto(plane) : null;
     }
 
-    public Plane savePlane(Plane plane) {
-        return planeRepository.save(plane);
+    public PlaneDTO savePlane(PlaneDTO planeDTO) {
+        Plane plane = PlaneMapper.INSTANCE.toEntity(planeDTO);
+        Plane savedPlane = planeRepository.save(plane);
+        return PlaneMapper.INSTANCE.toDto(savedPlane);
     }
 
-    public void deletePlane(Integer id) {
-        planeRepository.deleteById(id);
+    public boolean deletePlane(Integer id) {
+        if (planeRepository.existsById(id)) {
+            planeRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
 }

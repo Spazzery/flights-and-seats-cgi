@@ -1,15 +1,15 @@
-package com.summer.flightsandseats.DTO;
+package com.summer.flightsandseats.dto;
 
-import com.summer.flightsandseats.model.Flight;
-import com.summer.flightsandseats.model.Seat;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class BookingDTO {
     private Integer id;
     private String passengerName;

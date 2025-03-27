@@ -1,6 +1,6 @@
 package com.summer.flightsandseats.service;
 
-import com.summer.flightsandseats.DTO.FlightDTO;
+import com.summer.flightsandseats.dto.FlightDTO;
 import com.summer.flightsandseats.mapper.FlightMapper;
 import com.summer.flightsandseats.model.Flight;
 import com.summer.flightsandseats.repository.FlightRepository;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,13 +27,13 @@ public class FlightService {
 
     public FlightDTO getFlightById(Integer id) {
         Flight flight = flightRepository.findById(id).orElse(null);
-        return flight != null ? FlightMapper.INSTANCE.toDTO(flight) : null;
+        return flight != null ? FlightMapper.INSTANCE.toDto(flight) : null;
     }
 
     public FlightDTO saveFlight(FlightDTO flightDTO) {
         Flight flight = FlightMapper.INSTANCE.toEntity(flightDTO);
         Flight savedFlight = flightRepository.save(flight);
-        return FlightMapper.INSTANCE.toDTO(savedFlight);
+        return FlightMapper.INSTANCE.toDto(savedFlight);
     }
 
     public boolean deleteFlight(Integer id) {

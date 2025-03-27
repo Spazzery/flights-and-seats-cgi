@@ -1,5 +1,7 @@
 package com.summer.flightsandseats.service;
 
+import com.summer.flightsandseats.dto.SeatDTO;
+import com.summer.flightsandseats.mapper.SeatMapper;
 import com.summer.flightsandseats.model.Seat;
 import com.summer.flightsandseats.repository.SeatRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,19 +16,27 @@ public class SeatService {
 
     private final SeatRepository seatRepository;
 
-    public List<Seat> getAllSeats() {
-        return seatRepository.findAll();
+    public List<SeatDTO> getAllSeats() {
+        List<Seat> seats = seatRepository.findAll();
+        return SeatMapper.INSTANCE.toDTOList(seats);
     }
 
-    public Optional<Seat> getSeatById(Integer id) {
-        return seatRepository.findById(id);
+    public SeatDTO getSeatById(Integer id) {
+        Seat seat = seatRepository.findById(id).orElse(null);
+        return seat != null ? SeatMapper.INSTANCE.toDto(seat) : null;
     }
 
-    public Seat saveSeat(Seat seat) {
-        return seatRepository.save(seat);
+    public SeatDTO saveSeat(SeatDTO seatDTO) {
+        Seat seat = SeatMapper.INSTANCE.toEntity(seatDTO);
+        Seat savedSeat = seatRepository.save(seat);
+        return SeatMapper.INSTANCE.toDto(savedSeat);
     }
 
-    public void deleteSeat(Integer id) {
-        seatRepository.deleteById(id);
+    public boolean deleteSeat(Integer id) {
+        if (seatRepository.existsById(id)) {
+            seatRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

@@ -1,11 +1,15 @@
-package com.summer.flightsandseats.DTO;
+package com.summer.flightsandseats.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Data
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class FlightDTO {
     private Integer id;
     private String flightNumber;

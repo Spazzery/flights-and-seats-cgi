@@ -1,9 +1,12 @@
-package com.summer.flightsandseats.DTO;
+package com.summer.flightsandseats.dto;
 
-import com.summer.flightsandseats.model.Plane;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class SeatDTO {
     private Integer id;
     private String seatNumber;  // 12

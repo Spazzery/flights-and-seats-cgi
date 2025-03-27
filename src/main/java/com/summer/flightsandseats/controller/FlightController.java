@@ -1,7 +1,6 @@
 package com.summer.flightsandseats.controller;
 
-import com.summer.flightsandseats.DTO.FlightDTO;
-import com.summer.flightsandseats.model.Flight;
+import com.summer.flightsandseats.dto.FlightDTO;
 import com.summer.flightsandseats.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/flights")
