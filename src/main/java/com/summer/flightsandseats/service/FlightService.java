@@ -4,6 +4,7 @@ import com.summer.flightsandseats.dto.FlightDTO;
 import com.summer.flightsandseats.mapper.FlightMapper;
 import com.summer.flightsandseats.model.Flight;
 import com.summer.flightsandseats.repository.FlightRepository;
+import com.summer.flightsandseats.specification.FlightSpecifications;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +46,8 @@ public class FlightService {
     }
 
     // Custom
-    // Had ChatGPT generate this - simpler to do in Java rather than JPA SQL or Pure SQL
+    // Had Gemini generate this
+    // here I will create a database query that retrieves only needed flights
     public List<FlightDTO> filterFlights(
             String destination,
             LocalDate date,
@@ -53,15 +55,17 @@ public class FlightService {
             LocalTime endTime,
             Double minPrice,
             Double maxPrice) {
-        List<FlightDTO> flights = getAllFlights(); // Get all flights
+        List<Flight> flights = flightRepository.findAll(FlightSpecifications.filterFlights(
+                destination,
+                date,
+                startTime,
+                endTime,
+                minPrice,
+                maxPrice
+        ));
 
         return flights.stream()
-                .filter(flight -> destination == null || flight.getDestination().equalsIgnoreCase(destination)) // Filter by destination
-                .filter(flight -> date == null || flight.getDepartureDate().equals(date)) // Filter by date
-                .filter(flight -> startTime == null || flight.getDepartureTime().isAfter(startTime)) // Filter by start time
-                .filter(flight -> endTime == null || flight.getDepartureTime().isBefore(endTime)) // Filter by end time
-                .filter(flight -> minPrice == null || flight.getPrice() >= minPrice) // Filter by min price
-                .filter(flight -> maxPrice == null || flight.getPrice() <= maxPrice) // Filter by max price
+                .map(FlightMapper.INSTANCE::toDto)
                 .collect(Collectors.toList()); // Convert back to list
     }
 }

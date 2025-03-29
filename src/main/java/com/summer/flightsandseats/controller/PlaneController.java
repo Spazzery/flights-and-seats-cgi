@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/plane")
+@RequestMapping("/planes")
 public class PlaneController {
 
     private final PlaneService planeService;

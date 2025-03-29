@@ -10,5 +10,5 @@ export interface Seat {
     isNextToAisle: boolean;
     extraLegRoom: boolean;
     isAvailable: boolean;
-    plane: Plane;
+    planeId: number;
 }

@@ -7,6 +7,6 @@ export interface Booking {
     passengerEmail: string;
     passengerPhone: string;
     bookingTime: string;
-    flight: Flight;
-    seats: Seat[];
+    flightId: number;
+    seatIds: number[];
 }

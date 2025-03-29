@@ -5,5 +5,5 @@ export interface Plane {
     model: string;
     totalRows: number;
     seatsPerRow: number;
-    seats: Seat[];
+    seatIds: number[];
 }

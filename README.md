@@ -1,6 +1,7 @@
 This is an application made for CGI as part of their application process.
 
-How to use:
+**How to use:**
+
 
 
 **How much was AI used?**
@@ -15,3 +16,13 @@ basically used it as an extension to my previous knowledge.
 
 * I used ChatGPT and Copilot. I had multiple tabs of copilot open to ask any new questions that came up, which helped a lot
 in understanding.
+
+
+**Time spent on this**
+
+Easily 10+ hours.
+
+
+**Used libraries**
+
+I used Material-UI (https://mui.com/material-ui/react-table/)
