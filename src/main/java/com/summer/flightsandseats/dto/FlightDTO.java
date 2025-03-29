@@ -20,5 +20,5 @@ public class FlightDTO {
     private LocalTime arrivalTime;
     private Integer duration;
     private Double price;
-    private PlaneDTO plane;  // Use a DTO instead of the full entity
+    private Integer planeId;  // Use an id instead of the full entity
 }

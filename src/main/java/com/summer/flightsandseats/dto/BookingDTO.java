@@ -16,6 +16,6 @@ public class BookingDTO {
     private String passengerEmail;
     private String passengerPhone;
     private LocalDateTime bookingTime;
-    private FlightDTO flight;
-    private List<SeatDTO> seats;
+    private Integer flightId;
+    private List<Integer> seatIds;
 }

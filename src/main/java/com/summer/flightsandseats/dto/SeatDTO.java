@@ -17,5 +17,5 @@ public class SeatDTO {
     private boolean isNextToAisle;
     private boolean extraLegRoom;
     private boolean isAvailable;
-    private PlaneDTO plane;
+    private Integer planeId;
 }

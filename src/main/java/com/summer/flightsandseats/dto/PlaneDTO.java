@@ -14,5 +14,5 @@ public class PlaneDTO {
     private String model;
     private Integer totalRows;
     private Integer seatsPerRow;
-    private List<SeatDTO> seats;
+    private List<Integer> seatIds;
 }
