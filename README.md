@@ -1,45 +1,45 @@
-This is an application made for CGI as part of their application process.
+# This is a Flights and Seats application made for CGI as part of their application process.
 
-I unfortunately didn't have enough time to implement proper business logic. It does, however, have a scalable backend, and a frontend that displays flights, and when a flight's book button is clicked on, it directs to booking page that shows seats.
+While I didn't have time to implement proper business logic, the project does, however, have a scalable backend, and a frontend that displays flights. When a flight's book button is clicked on, it directs to a booking page that shows seats.
 
 **How to use:**
 
 1. Open the project in IntelliJ IDEA.
 
-2. Run ``gradle bootrun`` to get the backend as well as the in-memory database working.
+2. Run the following command to start the backend and the in-memory database: ``gradle bootrun``.
 
-3. Navigate to frontend/flights-and-seats-front. There run command ``npm run dev``.
+3. Navigate to the ``./frontend/flights-and-seats-front`` directory and start the frontend: ``npm run dev``.
 
-4. Open up the webpage in the recommended url - http://localhost:3000. (The backend runs at http://localhost:8080)
+4. Access the application at the recommended URL: http://localhost:3000. The backend operates at http://localhost:8080.
 
 **How much was AI used?**
 
-* I used AI a lot to help me think and explain things. Having a full understanding was the most important thing for me. I used AI to generate instructions for me to follow.
+I leveraged AI tools extensively during this project for:
 
-* I also used it to generate boilerplate code and sometimes some complex things.
+* Generating instructions and explanations to build a better understanding.
 
-* Since I didn't want AI to do everything for me, I wrote most of the
-code by myself, because this project has also helped me learn. I didn't trust it blindly, but I reviewed everything and
-basically used it as an extension to my previous knowledge.
+* Creating boilerplate code and tackling complex problems.
 
-* I mainly used ChatGPT, Copilot and Gemini. I had multiple tabs of copilot open to ask any new small questions that came up, which helped a lot
-in understanding.
+While AI played a supportive role, I did write a lot of the code myself. The code I did get I reviewed and adapted to my needs. This approach allowed me to learn effectively, using AI a useful and personal helper. The tools I relied on included:
+* ChatGPT
+* Copilot (it was especially great for troubleshooting smaller questions; I had many new instances of Copilot open just to clarify details)
+* Gemini
 
 
 **Time spent on this**
 
-Easily 15+ hours.
+Approximately 15+ hours.
 
 **Used stack**
-* Spring Boot
-* JPA
-* Next.js (with TypeScript)
-* React
+* **Backend:** Spring Boot, JPA
+* **Frontend:** Next.js (with TypeScript), React
 
 **Used libraries**
 
-I used Material-UI (https://mui.com/material-ui/react-table/)
+* Material-UI (https://mui.com/material-ui/react-table/)
 
 **Database schema**
 
 ![Database schema I drew](./db_schema.png)
+
+(The database schema diagram image is included as `db_schema.png` in the same directory as this README file.)
