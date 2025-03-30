@@ -1,5 +1,5 @@
-import {Flight} from "@/app/model/Flight";
-import {Seat} from "@/app/model/Seat";
+import {Flight} from "@/model/Flight";
+import {Seat} from "@/model/Seat";
 
 export interface Booking {
     id: number;

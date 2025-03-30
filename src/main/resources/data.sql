@@ -8,12 +8,76 @@ INSERT INTO plane (model, total_rows, seats_per_row) VALUES
 
 -- Insert sample seats
 INSERT INTO seat (seat_number, seat_letter, row_number, seat_type, is_next_to_window, is_next_to_aisle, extra_leg_room, is_available, plane_id) VALUES
-('1', 'A', 1, 'Business', true, false, true, true, 1),
-('1', 'B', 1, 'Business', false, true, true, true, 1),
-('2', 'A', 2, 'Standard', true, false, false, true, 1),
-('2', 'B', 2, 'Standard', false, true, false, false, 1),
-('3', 'A', 3, 'Standard', true, false, false, true, 2),
-('3', 'B', 3, 'Standard', false, true, false, false, 2);
+('1', 'A', 1, 'Business', true, false, true, false, 1),
+('1', 'B', 1, 'Business', false, false, true, false, 1),
+('1', 'C', 1, 'Business', false, true, true, true, 1),
+('1', 'D', 1, 'Business', false, true, true, true, 1),
+('1', 'E', 1, 'Business', false, false, true, true, 1),
+('1', 'F', 1, 'Business', true, false, true, true, 1),
+
+('2', 'A', 2, 'Business', true, false, false, true, 1),
+('2', 'B', 2, 'Business', false, false, false, false, 1),
+('2', 'C', 2, 'Business', false, true, false, true, 1),
+('2', 'D', 2, 'Business', false, true, false, true, 1),
+('2', 'E', 2, 'Business', false, false, false, true, 1),
+('2', 'F', 2, 'Business', true, false, false, true, 1),
+
+('3', 'A', 3, 'Standard', true, false, false, true, 1),
+('3', 'B', 3, 'Standard', false, false, false, true, 1),
+('3', 'C', 3, 'Standard', false, true, false, true, 1),
+('3', 'D', 3, 'Standard', false, true, false, true, 1),
+('3', 'E', 3, 'Standard', false, false, false, true, 1),
+('3', 'F', 3, 'Standard', true, false, false, true, 1),
+
+('4', 'A', 4, 'Standard', true, false, false, false, 1),
+('4', 'B', 4, 'Standard', false, false, false, false, 1),
+('4', 'C', 4, 'Standard', false, true, false, false, 1),
+('4', 'D', 4, 'Standard', false, true, false, false, 1),
+('4', 'E', 4, 'Standard', false, false, false, false, 1),
+('4', 'F', 4, 'Standard', true, false, false, true, 1),
+
+('5', 'A', 5, 'Standard', true, false, false, true, 1),
+('5', 'B', 5, 'Standard', false, false, false, false, 1),
+('5', 'C', 5, 'Standard', false, true, false, true, 1),
+('5', 'D', 5, 'Standard', false, true, false, false, 1),
+('5', 'E', 5, 'Standard', false, false, false, false, 1),
+('5', 'F', 5, 'Standard', true, false, false, false, 1),
+
+('6', 'A', 6, 'Standard', true, false, false, true, 1),
+('6', 'B', 6, 'Standard', false, false, false, true, 1),
+('6', 'C', 6, 'Standard', false, true, false, false, 1),
+('6', 'D', 6, 'Standard', false, true, false, false, 1),
+('6', 'E', 6, 'Standard', false, false, false, true, 1),
+('6', 'F', 6, 'Standard', true, false, false, false, 1),
+
+('7', 'A', 7, 'Standard', true, false, false, false, 1),
+('7', 'B', 7, 'Standard', false, false, false, false, 1),
+('7', 'C', 7, 'Standard', false, true, false, false, 1),
+('7', 'D', 7, 'Standard', false, true, false, false, 1),
+('7', 'E', 7, 'Standard', false, false, false, true, 1),
+('7', 'F', 7, 'Standard', true, false, false, true, 1),
+
+('8', 'A', 8, 'Standard', true, false, false, false, 1),
+('8', 'B', 8, 'Standard', false, false, false, false, 1),
+('8', 'C', 8, 'Standard', false, true, false, true, 1),
+('8', 'D', 8, 'Standard', false, true, false, true, 1),
+('8', 'E', 8, 'Standard', false, false, false, false, 1),
+('8', 'F', 8, 'Standard', true, false, false, false, 1),
+
+('9', 'A', 9, 'Standard', true, false, false, true, 1),
+('9', 'B', 9, 'Standard', false, false, false, false, 1),
+('9', 'C', 9, 'Standard', false, true, false, true, 1),
+('9', 'D', 9, 'Standard', false, true, false, false, 1),
+('9', 'E', 9, 'Standard', false, false, false, true, 1),
+('9', 'F', 9, 'Standard', true, false, false, false, 1),
+
+
+('1', 'A', 1, 'Standard', true, false, false, true, 2),
+('2', 'B', 1, 'Standard', false, false, false, false, 2),
+('3', 'C', 1, 'Standard', false, true, false, false, 2),
+('4', 'D', 1, 'Standard', false, true, false, false, 2),
+('5', 'E', 1, 'Standard', false, false, false, false, 2),
+('6', 'F', 1, 'Standard', true, false, false, false, 2);
 
 -- Insert sample flights
 INSERT INTO flight (flight_number, destination, departure_date, departure_time, arrival_date, arrival_time, duration, price, plane_id) VALUES

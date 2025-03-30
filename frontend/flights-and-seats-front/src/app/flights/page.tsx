@@ -1,13 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Flight } from "@/app/model/Flight";
+import { Flight } from "@/model/Flight";
 import {Table, TableHead, TableBody, TableCell, TableRow} from "@mui/material";
+import { useRouter } from "next/navigation";
 
 const API_URL = "http://localhost:8080/flights"
 
 export default function FlightsPage() {
 
     const [flights, setFlights] = useState<Flight[]>([]);
+    const router = useRouter()
 
     // fetch data from my API
     // automatically maps json to flight objects
@@ -44,6 +46,9 @@ export default function FlightsPage() {
                         {columns.map((column) => (
                             <TableCell key={column.id} className="font-bold">{column.label}</TableCell>
                         ))}
+                        <TableCell key="action">
+                            Action
+                        </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -55,6 +60,12 @@ export default function FlightsPage() {
                                     {flight[column.id]}
                                 </TableCell>
                             ))}
+                            <TableCell>
+                                <button onClick={() => router.push(`/booking/${flight.id}`)}
+                                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition">
+                                    Book
+                                </button>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

@@ -1,6 +1,7 @@
 package com.summer.flightsandseats.service;
 
 import com.summer.flightsandseats.dto.FlightDTO;
+import com.summer.flightsandseats.dto.FullFlightDTO;
 import com.summer.flightsandseats.mapper.FlightMapper;
 import com.summer.flightsandseats.model.Flight;
 import com.summer.flightsandseats.repository.FlightRepository;

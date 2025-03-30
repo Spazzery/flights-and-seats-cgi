@@ -1,4 +1,4 @@
-import {Plane} from "@/app/model/Plane";
+import {Plane} from "@/model/Plane";
 
 export interface Seat {
     id: number;
@@ -9,6 +9,6 @@ export interface Seat {
     isNextToWindow: boolean;
     isNextToAisle: boolean;
     extraLegRoom: boolean;
-    isAvailable: boolean;
+    available: boolean;
     planeId: number;
 }

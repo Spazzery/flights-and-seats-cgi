@@ -1,4 +1,4 @@
-import { Plane } from "@/app/model/Plane";
+import { Plane } from "@/model/Plane";
 
 export class Flight {
     id?: number;
