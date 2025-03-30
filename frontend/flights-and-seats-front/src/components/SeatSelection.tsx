@@ -40,7 +40,6 @@ export const SeatGrid = ({ plane }: { plane: Plane }) => {
                 const rowSeats = seatsByRow[parseInt(rowNumber, 10)];
                 const middleIndex = Math.floor(rowSeats.length / 2);
                 const numSeatsBeforeAisle = middleIndex;
-                const numSeatsAfterAisle = rowSeats.length - middleIndex;
 
                 return (
                     <div

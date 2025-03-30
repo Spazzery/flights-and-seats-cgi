@@ -6,8 +6,8 @@ export interface Seat {
     seatLetter: string;  // E
     rowNumber: number;  // 6
     seatType: string;  // Standard, Business
-    isNextToWindow: boolean;
-    isNextToAisle: boolean;
+    nextToWindow: boolean;
+    nextToAisle: boolean;
     extraLegRoom: boolean;
     available: boolean;
     planeId: number;
